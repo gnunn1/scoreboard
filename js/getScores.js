@@ -30,8 +30,9 @@ module.exports = function (results, racerPositions) {
   //var ws = new WebSocket('ws://localhost:9001/scoreboard');
 
   let hostname = location.hostname;
-  hostname = hostname.replace('scoreboard-','gamebus-');
+  hostname = hostname.replace('scoreboard','gamebus-boards');
   let socketUrl = 'ws://' + hostname + '/scoreboard';
+  console.log("Opening websocket at " + socketUrl);
   var ws = new WebSocket(socketUrl);
   ws.onopen = event => {
     // console.log(event);

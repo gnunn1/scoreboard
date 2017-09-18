@@ -26,9 +26,13 @@ module.exports = function (results, racerPositions) {
 */
 
   // declare websocket
-  var ws = new WebSocket('ws://gamebus-boards-production.apps-test.redhatkeynote.com/scoreboard');
-  // var ws = new WebSocket('ws://localhost:9001/scoreboard');
+  //var ws = new WebSocket('ws://gamebus-boards-production.apps-test.redhatkeynote.com/scoreboard');
+  //var ws = new WebSocket('ws://localhost:9001/scoreboard');
 
+  let hostname = location.hostname;
+  hostname = hostname.replace('scoreboard-','gamebus-');
+  let socketUrl = 'ws://' + hostname + '/scoreboard';
+  var ws = new WebSocket(socketUrl);
   ws.onopen = event => {
     // console.log(event);
   };

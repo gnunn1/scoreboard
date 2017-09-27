@@ -26,10 +26,11 @@ module.exports = function (results, racerPositions) {
 */
 
   // declare websocket
-  //var ws = new WebSocket('ws://gamebus-boards-production.apps-test.redhatkeynote.com/scoreboard');
+  //var ws = new WebSocket('ws://gamebus-boards-summit-game.192.168.42.60.nip.io/scoreboard');
   //var ws = new WebSocket('ws://localhost:9001/scoreboard');
-
   let hostname = location.hostname;
+  //let hostname = "scoreboard-summit-game.192.168.42.60.nip.io";
+  console.log("Served from hostname: " + hostname);
   hostname = hostname.replace('scoreboard','gamebus-boards');
   let socketUrl = 'ws://' + hostname + '/scoreboard';
   console.log("Opening websocket at " + socketUrl);

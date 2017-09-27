@@ -14,9 +14,9 @@
     "watch-js": "nodemon -e js -w js -x 'npm run build-js'",
     "watch-css": "nodemon -e scss -w styles -x 'npm run build-css'",
     "bs-sync": "browser-sync start --server --port 8080 --index index.html --browser 'google-chrome' --files '*.html' 'build'",
-    "build": "npm run build-js & npm run build-css",
+    "build": "mkdir -p build & npm run build-js & npm run build-css",
     "watch": "npm run watch-ify & npm run watch-css",
-    "start": "npm run watch-ify & npm run watch-css & npm run bs-sync"
+    "start": "npm run build & npm run watch-ify & npm run watch-css & npm run bs-sync"
   },
   "Dependencies": {
 

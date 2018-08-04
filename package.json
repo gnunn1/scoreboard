@@ -2,13 +2,18 @@
   "author": "Joshua Wilson",
   "license": "Apache-2.0",
   "name": "Scoreboard",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gnunn1/scoreboard.git"
+  },
   "scripts": {
     "build-sass": "node-sass styles/styles.scss build/styles.css",
     "build-css": "npm run build-sass && postcss --config options.json",
     "build-js": "browserify js/main.js -o build/bundle.js -dv",
     "build-min-js": "browserify js/main.js | uglifyjs -o build/main.min.js",
     "build-min-css": "cleancss styles/styles.css | gzip -9 -c > build/styles.css.gz",
+    "clean": "rm -rf build && rm -rf node_modules",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch-ify": "watchify js/main.js -o build/bundle.js -d",
     "watch-js": "nodemon -e js -w js -x 'npm run build-js'",
@@ -16,11 +21,10 @@
     "bs-sync": "browser-sync start --server --port 8080 --index index.html --browser 'google-chrome' --files '*.html' 'build'",
     "build": "mkdir -p build & npm run build-js & npm run build-css",
     "watch": "npm run watch-ify & npm run watch-css",
-    "start": "npm run build & npm run watch-ify & npm run watch-css & npm run bs-sync"
+    "start-develop": "npm run build & npm run watch-ify & npm run watch-css & npm run bs-sync",
+    "start": "node server.js"
   },
-  "Dependencies": {
-
-  },
+  "Dependencies": {},
   "devDependencies": {
     "autoprefixer": "latest",
     "browser-sync": "latest",
@@ -31,7 +35,11 @@
     "normalize.css": "^3.0.3",
     "postcss-cachify": "latest",
     "postcss-cli": "2.x",
-    "uglifyjs": "latest",
+    "uglify-js": "latest",
     "watchify": "3.x"
+  },
+  "dependencies": {
+    "connect": "^3.6.6",
+    "serve-static": "^1.13.2"
   }
 }
